@@ -8,45 +8,51 @@
         android:orderInCategory="101"
         android:title="@string/label_menu_item_search"
         android:icon="@android:drawable/ic_menu_search"
-        app:showAsAction="always"/>
+        android:showAsAction="always" 
+        android:onClick="clickMenuItem" />
     
     <item
         android:id="@+id/item_add"
         android:orderInCategory="102"
         android:title="@string/label_menu_item_add"
         android:icon="@android:drawable/ic_menu_add"
-        app:showAsAction="always"/>
+        android:showAsAction="always" 
+        android:onClick="clickMenuItem" />
     
     <item
         android:id="@+id/item_revert"
         android:orderInCategory="103"
         android:title="@string/label_menu_item_revert"
         android:icon="@android:drawable/ic_menu_revert"
-        app:showAsAction="always"/>
+        android:showAsAction="always" 
+        android:onClick="clickMenuItem" />
     
     <item
         android:id="@+id/item_delete"
         android:orderInCategory="104"
         android:title="@string/label_menu_item_delete"
         android:icon="@android:drawable/ic_menu_delete"
-        app:showAsAction="always"/>
+        android:showAsAction="always" 
+        android:onClick="clickMenuItem" />
     
     <item
         android:id="@+id/item_share"
         android:orderInCategory="105"
         android:title="@string/label_menu_item_share"
         android:icon="@android:drawable/ic_menu_share"
-        app:showAsAction="always">
+        android:showAsAction="always">
     
     	<menu>
     	    <item 
-                android:id="@+id/googleplus_item"
+                android:id="@+id/item_share_google"
                 android:orderInCategory="201"
-                android:title="@string/label_menu_share_google" />
+                android:title="@string/label_menu_share_google" 
+        		android:onClick="clickMenuItem" />
             <item
-                android:id="@+id/facebook_item"
+                android:id="@+id/item_share_facebook"
                 android:orderInCategory="202"
-                android:title="@string/label_menu_share_facebook" />
+                android:title="@string/label_menu_share_facebook" 
+        		android:onClick="clickMenuItem" />
     	</menu>
 	
     </item>
