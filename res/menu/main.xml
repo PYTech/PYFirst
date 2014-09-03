@@ -1,0 +1,53 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.pytech.hrm.MainActivity" >
+
+    <item
+        android:id="@+id/item_search"
+        android:orderInCategory="101"
+        android:title="@string/label_menu_item_search"
+        android:icon="@android:drawable/ic_menu_search"
+        app:showAsAction="always"/>
+    
+    <item
+        android:id="@+id/item_add"
+        android:orderInCategory="102"
+        android:title="@string/label_menu_item_add"
+        android:icon="@android:drawable/ic_menu_add"
+        app:showAsAction="always"/>
+    
+    <item
+        android:id="@+id/item_revert"
+        android:orderInCategory="103"
+        android:title="@string/label_menu_item_revert"
+        android:icon="@android:drawable/ic_menu_revert"
+        app:showAsAction="always"/>
+    
+    <item
+        android:id="@+id/item_delete"
+        android:orderInCategory="104"
+        android:title="@string/label_menu_item_delete"
+        android:icon="@android:drawable/ic_menu_delete"
+        app:showAsAction="always"/>
+    
+    <item
+        android:id="@+id/item_share"
+        android:orderInCategory="105"
+        android:title="@string/label_menu_item_share"
+        android:icon="@android:drawable/ic_menu_share"
+        app:showAsAction="always">
+    
+    	<menu>
+    	    <item 
+                android:id="@+id/googleplus_item"
+                android:orderInCategory="201"
+                android:title="@string/label_menu_share_google" />
+            <item
+                android:id="@+id/facebook_item"
+                android:orderInCategory="202"
+                android:title="@string/label_menu_share_facebook" />
+    	</menu>
+	
+    </item>
+</menu>

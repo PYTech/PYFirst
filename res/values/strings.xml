@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">HRMobile</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="label_main_activity"></string>
+    
+    <string name="label_title">標題</string>
+    <string name="input_title">輸入標題</string>
+    <string name="label_content">內容</string>
+    <string name="input_content">輸入內容</string>
+    
+    <string name="alarm_desc">定時提醒</string>
+    
+    <string name="label_menu_item_search">搜尋</string>
+    <string name="label_menu_item_add">新增</string>
+    <string name="label_menu_item_revert">復原</string>
+    <string name="label_menu_item_delete">刪除</string>
+    <string name="label_menu_item_share">分享</string>
+    <string name="label_menu_share_facebook">Facebook</string>
+    <string name="label_menu_share_google">Google+</string>
+
+</resources>
