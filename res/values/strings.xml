@@ -25,6 +25,8 @@
     <string name="label_menu_location">位置</string>
     <string name="label_menu_alarm">提醒</string>
     <string name="label_menu_select_color">選色</string>
+    
+    <string name="label_select">選取</string>
 
     <string name="about">這是 HiRender Android 手機版應用程式</string>
     <string name="version">版本: 1.0</string>
