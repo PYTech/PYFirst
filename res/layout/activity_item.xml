@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/default_margin"
+    android:padding="@dimen/default_padding"
+    android:stretchColumns="1">
+ 
+    <TableRow>
+        <TextView
+            android:text="@string/label_title"
+            android:background="@drawable/rectangle"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+    		android:layout_margin="@dimen/default_margin"
+    		android:padding="@dimen/default_padding" />
+        <EditText
+            android:id="@+id/title_text"
+            android:hint="@string/input_title"
+            android:background="@drawable/rectangle"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+    		android:layout_margin="@dimen/default_margin"
+    		android:padding="@dimen/default_padding" />
+    </TableRow>
+    
+    <TableRow>
+        <TextView
+            android:text="@string/label_content"
+            android:layout_height="200sp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/rectangle"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+    		android:layout_margin="@dimen/default_margin"
+    		android:padding="@dimen/default_padding" />
+        <EditText
+            android:id="@+id/content_text"
+            android:hint="@string/input_content"
+            android:layout_height="200sp"
+            android:layout_gravity="top"
+            android:background="@drawable/rectangle"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+    		android:layout_margin="@dimen/default_margin"
+    		android:padding="@dimen/default_padding" /> 
+    </TableRow>
+ 
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*">
+        
+         <TableRow>
+             <ImageButton 
+                 android:id="@+id/take_picture"
+                 android:src="@android:drawable/ic_menu_camera"
+                 android:onClick="clickFunction" 
+                 android:contentDescription="@string/label_menu_camera" />
+             <ImageButton
+                 android:id="@+id/record_sound"
+                 android:src="@drawable/ic_action_mic"
+                 android:onClick="clickFunction" 
+                 android:contentDescription="@string/label_menu_mic" />
+             <ImageButton 
+                 android:id="@+id/set_location"
+                 android:src="@android:drawable/ic_menu_mylocation"
+                 android:onClick="clickFunction" 
+                 android:contentDescription="@string/label_menu_location" />
+             <ImageButton 
+                 android:id="@+id/set_alarm"
+                 android:src="@drawable/ic_action_alarms"
+                 android:onClick="clickFunction" 
+                 android:contentDescription="@string/label_menu_alarm" />
+             <ImageButton 
+                 android:id="@+id/select_color"
+                 android:src="@android:drawable/ic_menu_gallery"
+                 android:onClick="clickFunction" 
+                 android:contentDescription="@string/label_menu_select_color" />
+         </TableRow>
+    </TableLayout>
+ 
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*">
+         
+        <TableRow>
+            <Button
+                android:id="@+id/cancel_item"
+                android:text="@android:string/cancel"
+                android:onClick="onSubmit"
+             	android:textAppearance="?android:attr/textAppearanceMedium" />
+            <Button
+                android:id="@+id/ok_teim"
+                android:text="@android:string/ok"
+                android:onClick="onSubmit"
+            	android:textAppearance="?android:attr/textAppearanceMedium" />
+        </TableRow>
+    </TableLayout>
+ 
+</TableLayout>
