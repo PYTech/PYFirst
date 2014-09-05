@@ -7,11 +7,14 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.pytech.hrm.R;
+import com.pytech.hrm.models.Item;
 import com.pytech.hrm.util.constants.HRM;
 
 public class ItemActivity extends Activity {
 
 	private EditText title_text, content_text;
+	
+	private Item item;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +22,8 @@ public class ItemActivity extends Activity {
 		setContentView(R.layout.activity_item);
 
 		this.processViews();
+		
+		
 	}
 
 	public void onSubmit(View view) {
@@ -59,5 +64,18 @@ public class ItemActivity extends Activity {
 	protected void processViews() {
 		this.title_text = (EditText) this.findViewById(R.id.title_text);
 		this.content_text = (EditText) this.findViewById(R.id.content_text);
+	}
+	
+	protected void processAction() {
+		Intent intent = this.getIntent();
+		String action = intent.getAction();
+		
+		if(HRM.ACTION_EDIT.equals(action)) {
+			// Use existed title.
+			String titleText = intent.getStringExtra(HRM.KEY_TITLE_TEXT);
+			this.title_text.setText(titleText);
+		} else {
+			this.item = new Item();
+		}
 	}
 }
