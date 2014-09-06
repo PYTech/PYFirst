@@ -12,10 +12,19 @@ public enum Colors {
 	}
 
 	public String getCode() {
-		return code;
+		return this.code;
 	}
 
 	public int parseColor() {
-		return Color.parseColor(code);
+		return Color.parseColor(this.code);
+	}
+	
+	public static Colors fromColorId(int id) {
+		for(Colors color : values()) {
+			if(color.parseColor() == id) {
+				return color;
+			}
+		}
+		return LIGHTGREY;
 	}
 }

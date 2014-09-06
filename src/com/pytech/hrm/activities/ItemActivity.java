@@ -8,12 +8,13 @@ import android.widget.EditText;
 
 import com.pytech.hrm.R;
 import com.pytech.hrm.models.Item;
+import com.pytech.hrm.util.constants.Colors;
 import com.pytech.hrm.util.constants.HRM;
 
 public class ItemActivity extends Activity {
 
 	private EditText title_text, content_text;
-	
+
 	private Item item;
 
 	@Override
@@ -22,27 +23,24 @@ public class ItemActivity extends Activity {
 		setContentView(R.layout.activity_item);
 
 		this.processViews();
-		
-		
+		this.processAction();
 	}
 
 	public void onSubmit(View view) {
 		if(view.getId() == R.id.ok_teim) {
-			// 讀取使用者輸入的標題與內容
+			// Get user input title and content.
 			String titleText = this.title_text.getText().toString();
 			String contentText = this.content_text.getText().toString();
 
-			// 取得回傳資料用的Intent物件
+			// Return item with new title and content.
 			Intent result = this.getIntent();
-			// 設定標題與內容
-			result.putExtra(HRM.KEY_TITLE_TEXT, titleText);
-			result.putExtra(HRM.KEY_CONTENT_TEXT, contentText);
+			this.item.setTitle(titleText);
+			this.item.setContent(contentText);
+			result.putExtra(HRM.KEY_ITEM, this.item);
 
-			// 設定回應結果為確定
+			// Result OK.
 			setResult(Activity.RESULT_OK, result);
 		}
-
-		// 結束
 		finish();
 	}
 
@@ -57,7 +55,29 @@ public class ItemActivity extends Activity {
 			case R.id.set_alarm:
 				break;
 			case R.id.select_color:
+				Intent intent = new Intent(this, ColorActivity.class);
+				this.startActivityForResult(intent, HRM.ACTION_CODE_START_COLOR);
 				break;
+		}
+	}
+
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if(resultCode == Activity.RESULT_OK) {
+			switch(requestCode) {
+				case HRM.ACTION_CODE_START_CAMERA:
+					break;
+				case HRM.ACTION_CODE_START_RECORD:
+					break;
+				case HRM.ACTION_CODE_START_LOCATION:
+					break;
+				case HRM.ACTION_CODE_START_ALARM:
+					break;
+				case HRM.ACTION_CODE_START_COLOR:
+					int colorId = data.getIntExtra(HRM.KEY_COLOR, Colors.LIGHTGREY.parseColor());
+					item.setColor(Colors.fromColorId(colorId));
+					break;
+			}
 		}
 	}
 
@@ -65,15 +85,16 @@ public class ItemActivity extends Activity {
 		this.title_text = (EditText) this.findViewById(R.id.title_text);
 		this.content_text = (EditText) this.findViewById(R.id.content_text);
 	}
-	
+
 	protected void processAction() {
 		Intent intent = this.getIntent();
 		String action = intent.getAction();
-		
+
 		if(HRM.ACTION_EDIT.equals(action)) {
-			// Use existed title.
-			String titleText = intent.getStringExtra(HRM.KEY_TITLE_TEXT);
-			this.title_text.setText(titleText);
+			// Use existed title & content.
+			this.item = intent.getParcelableExtra(HRM.KEY_ITEM);
+			this.title_text.setText(item.getTitle());
+			this.content_text.setText(item.getContent());
 		} else {
 			this.item = new Item();
 		}

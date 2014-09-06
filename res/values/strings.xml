@@ -30,4 +30,9 @@
 
     <string name="about">這是 HiRender Android 手機版應用程式</string>
     <string name="version">版本: 1.0</string>
+    
+    <string name="shared_google_ok">分享到 Google+ 成功!</string>
+    <string name="shared_facebook_ok">分享到 Facebook 成功!</string>
+    
+    <string name="title_activity_color">設定顏色</string>    
 </resources>
