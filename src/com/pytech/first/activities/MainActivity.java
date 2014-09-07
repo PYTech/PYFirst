@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.pytech.first.R;
 import com.pytech.first.adapters.ItemAdapter;
 import com.pytech.first.models.Item;
+import com.pytech.first.persistent.dao.ItemDAO;
 import com.pytech.first.util.constants.Colors;
 import com.pytech.first.util.constants.FIRST;
 
@@ -27,6 +28,8 @@ public class MainActivity extends Activity {
 
 	private ItemAdapter itemAdapter;
 	private List<Item> itemList;
+	
+	private ItemDAO itemDAO;
 
 	private ListView itemListView;
 	private MenuItem add_item, search_item, revert_item, share_item, delete_item;
@@ -42,6 +45,8 @@ public class MainActivity extends Activity {
 		// Initialization.
 		this.processViews();
 		this.processControllers();
+		
+		this.itemDAO = ItemDAO.getInstance(this.getApplicationContext());
 		this.processDatas();
 	}
 
@@ -92,11 +97,13 @@ public class MainActivity extends Activity {
 			Item item = (Item) data.getParcelableExtra(FIRST.KEY_ITEM);
 			if(requestCode == FIRST.REQ_CODE_NEW) {
 				item.setDatetime(System.currentTimeMillis());
+				this.itemDAO.insert(item);
 				this.itemList.add(item);
 			} else if(requestCode == FIRST.REQ_CODE_EDIT) {
 				int position = data.getIntExtra(FIRST.KEY_POSITION, FIRST.UNKNOWN);
 				if(position != FIRST.UNKNOWN) {
 					item.setLastModify(System.currentTimeMillis());
+					this.itemDAO.update(item);
 					this.itemList.set(position, item);
 				}
 			}
@@ -144,17 +151,27 @@ public class MainActivity extends Activity {
 		// Generate initial data and adapter.
 		if(this.itemList == null) {
 			this.itemList = new ArrayList<Item>();
-			long now = System.currentTimeMillis();
-			int i;
-			for(i = 1; i <= FIRST.INIT_MOCK_DATA_NUM; ++i) {
-				String mockTitle = FIRST.MODK_DATA_TITLE_HEADER + i;
-				String mockContent = FIRST.MODK_DATA_CONTENT_HEADER + i;
-				Colors[] colors = Colors.values();
-				int randIndex = (int) (Math.random() * colors.length);
-				Colors mockColor = colors[randIndex];
-				this.itemList.add(new Item(i + 1, now, mockColor, mockTitle, mockContent, StringUtils.EMPTY, 0, 0, 0));
-			}
-	
+			
+			List<Item> dbList = this.itemDAO.getAll();
+			if(dbList.size() == 0) {
+				// Generate mock datas.
+				long now = System.currentTimeMillis();
+				int i;
+				for(i = 1; i <= FIRST.INIT_MOCK_DATA_NUM; ++i) {
+					String mockTitle = FIRST.MODK_DATA_TITLE_HEADER + i;
+					String mockContent = FIRST.MODK_DATA_CONTENT_HEADER + i;
+					Colors[] colors = Colors.values();
+					int randIndex = (int) (Math.random() * colors.length);
+					Colors mockColor = colors[randIndex];
+					Item newItem = new Item(i + 1, now, mockColor, mockTitle, mockContent, StringUtils.EMPTY, 0, 0, 0);
+					this.itemDAO.insert(newItem);
+					this.itemList.add(newItem);
+				}
+			} else {
+				for(Item item : dbList) {
+					this.itemList.add(item);
+				}
+			}			
 			// Put item data into list view through self-defined adapter.
 			this.itemAdapter = new ItemAdapter(this, R.layout.item, this.itemList);
 			this.itemListView.setAdapter(this.itemAdapter);
@@ -194,20 +211,14 @@ public class MainActivity extends Activity {
 	private void deleteSelected() {
 		if(this.selectedCount <= 0) {
 			return;
-		}
-		
-		List<Integer> delList = new ArrayList<Integer>();
+		}		
 		int i;
 		for(i = this.itemList.size() - 1; i >= 0; --i) {
 			Item item = this.itemList.get(i);
-			if(item != null) {
-				if(item.isSelected()) {
-					delList.add(i);
-				}
+			if(item != null && item.isSelected()) {
+				this.itemDAO.delete(item.getId());
+				this.itemList.remove(i);
 			}
-		}
-		for(int id : delList) {
-			this.itemList.remove(id);
 		}
 	}
 	
