@@ -5,7 +5,8 @@ public class HRM {
 	public static final String KEY_ITEM = "item";
 	public static final String KEY_COLOR = "color";
 	
-	public static final String ACTION_EDIT = "EDIT_ITEM";
+	public static final String ACTION_NEW_ITEM = "ItemActivity.NEW_ITEM";
+	public static final String ACTION_EDIT_ITEM = "ItemActivity.EDIT_ITEM";
 	
 	public static final int ACTION_CODE_START_CAMERA = 0;
 	public static final int ACTION_CODE_START_RECORD = 1;

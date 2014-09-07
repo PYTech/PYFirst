@@ -109,8 +109,7 @@ public class MainActivity extends Activity {
 					processMenu(item);
 					itemAdapter.set(position, item);
 				} else {
-					Intent intent = new Intent(HRM.ACTION_EDIT);
-					intent.setClass(MainActivity.this, ItemActivity.class);
+					Intent intent = new Intent(HRM.ACTION_EDIT_ITEM);
 					intent.putExtra(HRM.KEY_POSITION, position);
 					intent.putExtra(HRM.KEY_ITEM, item);
 					startActivityForResult(intent, HRM.REQ_CODE_EDIT);

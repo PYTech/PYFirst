@@ -90,7 +90,7 @@ public class ItemActivity extends Activity {
 		Intent intent = this.getIntent();
 		String action = intent.getAction();
 
-		if(HRM.ACTION_EDIT.equals(action)) {
+		if(HRM.ACTION_EDIT_ITEM.equals(action)) {
 			// Use existed title & content.
 			this.item = intent.getParcelableExtra(HRM.KEY_ITEM);
 			this.title_text.setText(item.getTitle());

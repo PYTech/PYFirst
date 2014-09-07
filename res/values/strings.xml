@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+	<!-- GUI Text Strings -->
     <string name="app_name">HRMobile</string>
     <string name="hello_world">Hello world!</string>
     <string name="label_main_activity"></string>
-    
     <string name="label_title">標題</string>
     <string name="input_title">輸入標題</string>
     <string name="label_content">內容</string>
     <string name="input_content">輸入內容</string>
-    
     <string name="alarm_desc">定時提醒</string>
-    
     <string name="label_menu_item_search">搜尋</string>
     <string name="label_menu_item_add">新增</string>
     <string name="label_menu_item_revert">復原</string>
@@ -19,20 +16,35 @@
     <string name="label_menu_item_share">分享</string>
     <string name="label_menu_share_facebook">Facebook</string>
     <string name="label_menu_share_google">Google+</string>
-    
     <string name="label_menu_camera">拍照</string>
     <string name="label_menu_mic">錄音</string>
     <string name="label_menu_location">位置</string>
     <string name="label_menu_alarm">提醒</string>
     <string name="label_menu_select_color">選色</string>
-    
     <string name="label_select">選取</string>
-
     <string name="about">這是 HiRender Android 手機版應用程式</string>
     <string name="version">版本: 1.0</string>
-    
     <string name="shared_google_ok">分享到 Google+ 成功!</string>
     <string name="shared_facebook_ok">分享到 Facebook 成功!</string>
+    <string name="title_activity_color">設定顏色</string>
     
-    <string name="title_activity_color">設定顏色</string>    
+    <!-- Preference Setting Strings -->
+    <string name="default_color">預設的顏色</string>
+    <string name="default_color_summary">新增記事的預設顏色</string>
+    <string name="default_notify">預設提醒時間</string>
+    <string name="default_notify_summary">在指定的時間之前通知</string>
+    <string-array name="notify_minutes_array">
+        <item>五分鐘</item>
+        <item>十分鐘</item>
+        <item>二十分鐘</item>
+        <item>三十分鐘</item>
+        <item>六十分鐘</item>
+    </string-array>
+    <string-array name="notify_minutes_value_array">
+        <item>5</item>
+        <item>10</item>
+        <item>20</item>
+        <item>30</item>
+        <item>60</item>
+    </string-array>
 </resources>

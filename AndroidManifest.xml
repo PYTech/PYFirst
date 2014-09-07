@@ -29,7 +29,13 @@
         </activity>
         
         <activity
-            android:name="com.pytech.hrm.activities.ItemActivity" />
+            android:name="com.pytech.hrm.activities.ItemActivity" >
+            <intent-filter>
+                <action android:name="ItemActivity.NEW_ITEM"/>
+                <action android:name="ItemActivity.EDIT_ITEM"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         
         <activity
     		android:name="com.pytech.hrm.activities.ColorActivity"
