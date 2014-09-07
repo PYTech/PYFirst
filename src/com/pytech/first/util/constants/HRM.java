@@ -1,4 +1,4 @@
-package com.pytech.hrm.util.constants;
+package com.pytech.first.util.constants;
 
 public class HRM {
 	public static final String KEY_POSITION = "position";
@@ -17,6 +17,6 @@ public class HRM {
 	public static final int UNKNOWN = -1;
 	
 	public static final int INIT_MOCK_DATA_NUM = 5;
-	public static final String MODK_DATA_TITLE_HEADER = "Mission-";
-	public static final String MODK_DATA_CONTENT_HEADER = "Frame-";
+	public static final String MODK_DATA_TITLE_HEADER = "Note-";
+	public static final String MODK_DATA_CONTENT_HEADER = "TODO-";
 }

@@ -1,6 +1,6 @@
-package com.pytech.hrm.activities;
+package com.pytech.first.activities;
 
-import com.pytech.hrm.R;
+import com.pytech.first.R;
 
 import android.app.Activity;
 import android.os.Bundle;

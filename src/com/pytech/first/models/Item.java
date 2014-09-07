@@ -1,4 +1,4 @@
-package com.pytech.hrm.models;
+package com.pytech.first.models;
 
 import java.util.Date;
 import java.util.Locale;
@@ -8,7 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.pytech.hrm.util.constants.Colors;
+import com.pytech.first.util.constants.Colors;
 
 public class Item implements Parcelable {
 	

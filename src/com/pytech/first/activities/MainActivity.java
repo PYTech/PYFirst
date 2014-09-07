@@ -1,4 +1,4 @@
-package com.pytech.hrm.activities;
+package com.pytech.first.activities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +17,11 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.pytech.hrm.R;
-import com.pytech.hrm.adapters.ItemAdapter;
-import com.pytech.hrm.models.Item;
-import com.pytech.hrm.util.constants.Colors;
-import com.pytech.hrm.util.constants.HRM;
+import com.pytech.first.R;
+import com.pytech.first.adapters.ItemAdapter;
+import com.pytech.first.models.Item;
+import com.pytech.first.util.constants.Colors;
+import com.pytech.first.util.constants.FIRST;
 
 public class MainActivity extends Activity {
 
@@ -63,7 +63,7 @@ public class MainActivity extends Activity {
 				break;
 			case R.id.item_add:
 				Intent intent = new Intent(this, ItemActivity.class);
-				this.startActivityForResult(intent, HRM.REQ_CODE_NEW);
+				this.startActivityForResult(intent, FIRST.REQ_CODE_NEW);
 				break;
 			case R.id.item_revert:
 				break;
@@ -87,13 +87,13 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if(resultCode == Activity.RESULT_OK) {
-			Item item = (Item) data.getParcelableExtra(HRM.KEY_ITEM);
-			if(requestCode == HRM.REQ_CODE_NEW) {
+			Item item = (Item) data.getParcelableExtra(FIRST.KEY_ITEM);
+			if(requestCode == FIRST.REQ_CODE_NEW) {
 				item.setDatetime(System.currentTimeMillis());
 				this.itemList.add(item);
-			} else if(requestCode == HRM.REQ_CODE_EDIT) {
-				int position = data.getIntExtra(HRM.KEY_POSITION, HRM.UNKNOWN);
-				if(position != HRM.UNKNOWN) {
+			} else if(requestCode == FIRST.REQ_CODE_EDIT) {
+				int position = data.getIntExtra(FIRST.KEY_POSITION, FIRST.UNKNOWN);
+				if(position != FIRST.UNKNOWN) {
 					item.setLastModify(System.currentTimeMillis());
 					this.itemList.set(position, item);
 				}
@@ -117,9 +117,9 @@ public class MainActivity extends Activity {
 					itemAdapter.set(position, item);
 				} else {
 					Intent intent = new Intent(getString(R.string.ACTION_EDIT_ITEM));
-					intent.putExtra(HRM.KEY_POSITION, position);
-					intent.putExtra(HRM.KEY_ITEM, item);
-					startActivityForResult(intent, HRM.REQ_CODE_EDIT);
+					intent.putExtra(FIRST.KEY_POSITION, position);
+					intent.putExtra(FIRST.KEY_ITEM, item);
+					startActivityForResult(intent, FIRST.REQ_CODE_EDIT);
 				}
 			}
 		};
@@ -144,9 +144,9 @@ public class MainActivity extends Activity {
 			this.itemList = new ArrayList<Item>();
 			long now = System.currentTimeMillis();
 			int i;
-			for(i = 1; i <= HRM.INIT_MOCK_DATA_NUM; ++i) {
-				String mockTitle = HRM.MODK_DATA_TITLE_HEADER + i;
-				String mockContent = HRM.MODK_DATA_CONTENT_HEADER + i;
+			for(i = 1; i <= FIRST.INIT_MOCK_DATA_NUM; ++i) {
+				String mockTitle = FIRST.MODK_DATA_TITLE_HEADER + i;
+				String mockContent = FIRST.MODK_DATA_CONTENT_HEADER + i;
 				Colors[] colors = Colors.values();
 				int randIndex = (int) (Math.random() * colors.length);
 				Colors mockColor = colors[randIndex];

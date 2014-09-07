@@ -1,4 +1,4 @@
-package com.pytech.hrm.adapters;
+package com.pytech.first.adapters;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.pytech.hrm.R;
-import com.pytech.hrm.models.Item;
+import com.pytech.first.R;
+import com.pytech.first.models.Item;
 
 public class ItemAdapter extends ArrayAdapter<Item> {
 	private int resource;

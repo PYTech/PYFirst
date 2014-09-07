@@ -1,4 +1,4 @@
-package com.pytech.hrm.activities;
+package com.pytech.first.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,11 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import com.pytech.hrm.R;
-import com.pytech.hrm.models.Item;
-import com.pytech.hrm.util.PrefUtils;
-import com.pytech.hrm.util.constants.Colors;
-import com.pytech.hrm.util.constants.HRM;
+import com.pytech.first.R;
+import com.pytech.first.models.Item;
+import com.pytech.first.util.PrefUtils;
+import com.pytech.first.util.constants.Colors;
+import com.pytech.first.util.constants.FIRST;
 
 public class ItemActivity extends Activity {
 
@@ -38,7 +38,7 @@ public class ItemActivity extends Activity {
 			Intent result = this.getIntent();
 			this.item.setTitle(titleText);
 			this.item.setContent(contentText);
-			result.putExtra(HRM.KEY_ITEM, this.item);
+			result.putExtra(FIRST.KEY_ITEM, this.item);
 
 			// Result OK.
 			setResult(Activity.RESULT_OK, result);
@@ -58,7 +58,7 @@ public class ItemActivity extends Activity {
 				break;
 			case R.id.select_color:
 				Intent intent = new Intent(this, ColorActivity.class);
-				this.startActivityForResult(intent, HRM.ACTION_CODE_START_COLOR);
+				this.startActivityForResult(intent, FIRST.ACTION_CODE_START_COLOR);
 				break;
 		}
 	}
@@ -67,16 +67,16 @@ public class ItemActivity extends Activity {
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if(resultCode == Activity.RESULT_OK) {
 			switch(requestCode) {
-				case HRM.ACTION_CODE_START_CAMERA:
+				case FIRST.ACTION_CODE_START_CAMERA:
 					break;
-				case HRM.ACTION_CODE_START_RECORD:
+				case FIRST.ACTION_CODE_START_RECORD:
 					break;
-				case HRM.ACTION_CODE_START_LOCATION:
+				case FIRST.ACTION_CODE_START_LOCATION:
 					break;
-				case HRM.ACTION_CODE_START_ALARM:
+				case FIRST.ACTION_CODE_START_ALARM:
 					break;
-				case HRM.ACTION_CODE_START_COLOR:
-					int colorId = data.getIntExtra(HRM.KEY_COLOR, Colors.LIGHTGREY.parseColor());
+				case FIRST.ACTION_CODE_START_COLOR:
+					int colorId = data.getIntExtra(FIRST.KEY_COLOR, Colors.LIGHTGREY.parseColor());
 					item.setColor(Colors.fromColorId(colorId));
 					break;
 			}
@@ -94,15 +94,15 @@ public class ItemActivity extends Activity {
 
 		if(this.getString(R.string.ACTION_EDIT_ITEM).equals(action)) {
 			// Use existed title & content.
-			this.item = intent.getParcelableExtra(HRM.KEY_ITEM);
+			this.item = intent.getParcelableExtra(FIRST.KEY_ITEM);
 			this.title_text.setText(item.getTitle());
 			this.content_text.setText(item.getContent());
 		} else {
 			this.item = new Item();
 			// Handle default color setting.
 			SharedPreferences pref = PrefUtils.getSharedPref(this);
-			int color = pref.getInt(this.getString(R.string.PREF_KEY_COLOR), HRM.UNKNOWN);
-			if(color != HRM.UNKNOWN) {
+			int color = pref.getInt(this.getString(R.string.PREF_KEY_COLOR), FIRST.UNKNOWN);
+			if(color != FIRST.UNKNOWN) {
 				this.item.setColor(Colors.fromColorId(color));
 			}
 		}

@@ -1,4 +1,4 @@
-package com.pytech.hrm.util.constants;
+package com.pytech.first.util.constants;
 
 public class Layout {
 	public static final int COLOR_DIALOG_WIDTH = 128;

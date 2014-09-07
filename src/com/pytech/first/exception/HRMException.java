@@ -1,4 +1,4 @@
-package com.pytech.hrm.exception;
+package com.pytech.first.exception;
 
 public class HRMException extends RuntimeException {
 

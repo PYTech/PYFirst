@@ -1,13 +1,13 @@
-package com.pytech.hrm.activities;
+package com.pytech.first.activities;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.Preference;
 
-import com.pytech.hrm.R;
-import com.pytech.hrm.util.PrefUtils;
-import com.pytech.hrm.util.constants.Colors;
-import com.pytech.hrm.util.constants.HRM;
+import com.pytech.first.R;
+import com.pytech.first.util.PrefUtils;
+import com.pytech.first.util.constants.Colors;
+import com.pytech.first.util.constants.FIRST;
 
 public class PreferenceActivity extends android.preference.PreferenceActivity {
 	private SharedPreferences sharedPreferences;
@@ -27,9 +27,9 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 	protected void onResume() {
 		super.onResume();
 		// 讀取設定的預設顏色
-		int color = this.sharedPreferences.getInt(this.getString(R.string.PREF_KEY_COLOR), HRM.UNKNOWN);
+		int color = this.sharedPreferences.getInt(this.getString(R.string.PREF_KEY_COLOR), FIRST.UNKNOWN);
 
-		if(color != HRM.UNKNOWN) {
+		if(color != FIRST.UNKNOWN) {
 			// 設定顏色說明
 			this.defaultColor.setSummary(getString(R.string.default_color_summary) + ": " + Colors.fromColorId(color));
 		}

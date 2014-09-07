@@ -1,12 +1,12 @@
-package com.pytech.hrm.activities;
+package com.pytech.first.activities;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.pytech.hrm.R;
-import com.pytech.hrm.util.PrefUtils;
-import com.pytech.hrm.util.constants.Colors;
-import com.pytech.hrm.util.constants.HRM;
-import com.pytech.hrm.util.constants.Layout;
+import com.pytech.first.R;
+import com.pytech.first.util.PrefUtils;
+import com.pytech.first.util.constants.Colors;
+import com.pytech.first.util.constants.FIRST;
+import com.pytech.first.util.constants.Layout;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -58,7 +58,7 @@ public class ColorActivity extends Activity {
 				editor.putInt(getString(R.string.PREF_KEY_COLOR), view.getId());
 				editor.commit();
 			} else {
-				result.putExtra(HRM.KEY_COLOR, view.getId());
+				result.putExtra(FIRST.KEY_COLOR, view.getId());
 				setResult(Activity.RESULT_OK, result);
 			}
 			finish();

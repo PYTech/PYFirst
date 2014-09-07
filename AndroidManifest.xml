@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.pytech.hrm"
+    package="com.pytech.first"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -10,10 +10,10 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/logo_hrm"
+        android:icon="@drawable/ic_launcher"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.pytech.hrm.activities.MainActivity"
+            android:name="com.pytech.first.activities.MainActivity"
             android:label="@string/empty" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,32 +22,30 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.pytech.hrm.activities.AboutActivity"
+            android:name="com.pytech.first.activities.AboutActivity"
             android:label="@string/empty"
             android:theme="@android:style/Theme.Dialog" >
         </activity>
         <activity
-            android:name="com.pytech.hrm.activities.ItemActivity"
+            android:name="com.pytech.first.activities.ItemActivity"
             android:label="@string/empty" >
             <intent-filter>
-                <action android:name="ItemActivity.NEW_ITEM" />
-                <action android:name="ItemActivity.EDIT_ITEM" />
-
+                <action android:name="com.pytech.notebook.NEW_ITEM" />
+                <action android:name="com.pytech.notebook.EDIT_ITEM" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.pytech.hrm.activities.ColorActivity"
+            android:name="com.pytech.first.activities.ColorActivity"
             android:label="@string/title_activity_color"
             android:theme="@android:style/Theme.Dialog" >
             <intent-filter>
-                <action android:name="ColorActivity.SET_COLOR" />
-
+                <action android:name="com.pytech.notebook.SET_COLOR" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity 
-            android:name="com.pytech.hrm.activities.PreferenceActivity"
+            android:name="com.pytech.first.activities.PreferenceActivity"
             android:label="@string/label_menu_preference" />
     </application>
 

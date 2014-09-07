@@ -1,4 +1,4 @@
-package com.pytech.hrm.persistent.dao;
+package com.pytech.first.persistent.dao;
 
 import java.util.List;
 import java.util.Map;
