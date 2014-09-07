@@ -9,15 +9,15 @@
         android:targetSdkVersion="19" />
 
     <application
+        android:label="@string/app_name"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.pytech.first.activities.MainActivity"
-            android:label="@string/empty" >
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
