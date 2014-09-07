@@ -5,9 +5,6 @@ public class HRM {
 	public static final String KEY_ITEM = "item";
 	public static final String KEY_COLOR = "color";
 	
-	public static final String ACTION_NEW_ITEM = "ItemActivity.NEW_ITEM";
-	public static final String ACTION_EDIT_ITEM = "ItemActivity.EDIT_ITEM";
-	
 	public static final int ACTION_CODE_START_CAMERA = 0;
 	public static final int ACTION_CODE_START_RECORD = 1;
 	public static final int ACTION_CODE_START_LOCATION = 2;
@@ -18,4 +15,8 @@ public class HRM {
 	public static final int REQ_CODE_EDIT = 1;
 	
 	public static final int UNKNOWN = -1;
+	
+	public static final int INIT_MOCK_DATA_NUM = 5;
+	public static final String MODK_DATA_TITLE_HEADER = "Mission-";
+	public static final String MODK_DATA_CONTENT_HEADER = "Frame-";
 }

@@ -3,6 +3,8 @@ package com.pytech.hrm.activities;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -74,6 +76,9 @@ public class MainActivity extends Activity {
 			case R.id.item_share_facebook:
 				Toast.makeText(this, R.string.shared_facebook_ok, Toast.LENGTH_SHORT).show();
 				break;
+			case R.id.item_preference:
+				this.startActivity(new Intent(this, PreferenceActivity.class));
+				break;
 		}
 		this.reset();
 		return true;
@@ -84,10 +89,12 @@ public class MainActivity extends Activity {
 		if(resultCode == Activity.RESULT_OK) {
 			Item item = (Item) data.getParcelableExtra(HRM.KEY_ITEM);
 			if(requestCode == HRM.REQ_CODE_NEW) {
+				item.setDatetime(System.currentTimeMillis());
 				this.itemList.add(item);
 			} else if(requestCode == HRM.REQ_CODE_EDIT) {
 				int position = data.getIntExtra(HRM.KEY_POSITION, HRM.UNKNOWN);
 				if(position != HRM.UNKNOWN) {
+					item.setLastModify(System.currentTimeMillis());
 					this.itemList.set(position, item);
 				}
 			}
@@ -109,7 +116,7 @@ public class MainActivity extends Activity {
 					processMenu(item);
 					itemAdapter.set(position, item);
 				} else {
-					Intent intent = new Intent(HRM.ACTION_EDIT_ITEM);
+					Intent intent = new Intent(getString(R.string.ACTION_EDIT_ITEM));
 					intent.putExtra(HRM.KEY_POSITION, position);
 					intent.putExtra(HRM.KEY_ITEM, item);
 					startActivityForResult(intent, HRM.REQ_CODE_EDIT);
@@ -133,15 +140,23 @@ public class MainActivity extends Activity {
 
 	protected void processDatas() {
 		// Generate initial data and adapter.
-		this.itemList = new ArrayList<Item>();
-		long now = System.currentTimeMillis();
-		this.itemList.add(new Item(1, now, Colors.RED, "Mission 1", "Scene: xxx.ma; Frames: 1-10", "", 0, 0, 0));
-		this.itemList.add(new Item(2, now, Colors.BLUE, "Mission 2", "Scene: abc.blend; Frames: 1-20", "", 0, 0, 0));
-		this.itemList.add(new Item(3, now, Colors.GREEN, "Mission 3", "Scene: test.mb; Frames: 30-50", "", 0, 0, 0));
-
-		// Put item data into list view through self-defined adapter.
-		this.itemAdapter = new ItemAdapter(this, R.layout.item, this.itemList);
-		this.itemListView.setAdapter(this.itemAdapter);
+		if(this.itemList == null) {
+			this.itemList = new ArrayList<Item>();
+			long now = System.currentTimeMillis();
+			int i;
+			for(i = 1; i <= HRM.INIT_MOCK_DATA_NUM; ++i) {
+				String mockTitle = HRM.MODK_DATA_TITLE_HEADER + i;
+				String mockContent = HRM.MODK_DATA_CONTENT_HEADER + i;
+				Colors[] colors = Colors.values();
+				int randIndex = (int) (Math.random() * colors.length);
+				Colors mockColor = colors[randIndex];
+				this.itemList.add(new Item(i + 1, now, mockColor, mockTitle, mockContent, StringUtils.EMPTY, 0, 0, 0));
+			}
+	
+			// Put item data into list view through self-defined adapter.
+			this.itemAdapter = new ItemAdapter(this, R.layout.item, this.itemList);
+			this.itemListView.setAdapter(this.itemAdapter);
+		}
 	}
 
 	protected void initializeMenu(Menu menu) {

@@ -3,7 +3,7 @@
 	<!-- GUI Text Strings -->
     <string name="app_name">HRMobile</string>
     <string name="hello_world">Hello world!</string>
-    <string name="label_main_activity"></string>
+    <string name="empty"></string>
     <string name="label_title">標題</string>
     <string name="input_title">輸入標題</string>
     <string name="label_content">內容</string>
@@ -21,6 +21,7 @@
     <string name="label_menu_location">位置</string>
     <string name="label_menu_alarm">提醒</string>
     <string name="label_menu_select_color">選色</string>
+    <string name="label_menu_preference">使用者偏好</string>
     <string name="label_select">選取</string>
     <string name="about">這是 HiRender Android 手機版應用程式</string>
     <string name="version">版本: 1.0</string>
@@ -47,4 +48,11 @@
         <item>30</item>
         <item>60</item>
     </string-array>
+    
+    <!-- Constants -->
+    <string name="ACTION_NEW_ITEM">ItemActivity.NEW_ITEM</string>
+    <string name="ACTION_EDIT_ITEM">ItemActivity.EDIT_ITEM</string>
+    <string name="ACTION_COLOR_SET">ColorActivity.SET_COLOR</string>
+    <string name="PREF_KEY_COLOR">Pref.DEFAULT_COLOR</string>
+    <string name="PREF_KEY_NOTIFY">Pref.NOTIFY_MINUTES</string>
 </resources>

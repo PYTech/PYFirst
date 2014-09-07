@@ -1,12 +1,16 @@
 package com.pytech.hrm.activities;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.pytech.hrm.R;
+import com.pytech.hrm.util.PrefUtils;
 import com.pytech.hrm.util.constants.Colors;
 import com.pytech.hrm.util.constants.HRM;
 import com.pytech.hrm.util.constants.Layout;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -47,8 +51,16 @@ public class ColorActivity extends Activity {
 		@Override
 		public void onClick(View view) {
 			Intent result = getIntent();
-			result.putExtra(HRM.KEY_COLOR, view.getId());
-			setResult(Activity.RESULT_OK, result);
+			String action = result.getAction();
+			
+			if(StringUtils.equals(action, getString(R.string.ACTION_COLOR_SET))) {
+				Editor editor = PrefUtils.getEditor(ColorActivity.this);
+				editor.putInt(getString(R.string.PREF_KEY_COLOR), view.getId());
+				editor.commit();
+			} else {
+				result.putExtra(HRM.KEY_COLOR, view.getId());
+				setResult(Activity.RESULT_OK, result);
+			}
 			finish();
 		}
 	}

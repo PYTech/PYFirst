@@ -5,55 +5,57 @@
 
     <item
         android:id="@+id/item_search"
-        android:orderInCategory="101"
-        android:title="@string/label_menu_item_search"
         android:icon="@android:drawable/ic_menu_search"
-        android:showAsAction="always" 
-        android:onClick="clickMenuItem" />
-    
+        android:onClick="clickMenuItem"
+        android:orderInCategory="101"
+        android:showAsAction="always"
+        android:title="@string/label_menu_item_search"/>
     <item
         android:id="@+id/item_add"
-        android:orderInCategory="102"
-        android:title="@string/label_menu_item_add"
         android:icon="@android:drawable/ic_menu_add"
-        android:showAsAction="always" 
-        android:onClick="clickMenuItem" />
-    
+        android:onClick="clickMenuItem"
+        android:orderInCategory="102"
+        android:showAsAction="always"
+        android:title="@string/label_menu_item_add"/>
     <item
         android:id="@+id/item_revert"
-        android:orderInCategory="103"
-        android:title="@string/label_menu_item_revert"
         android:icon="@android:drawable/ic_menu_revert"
-        android:showAsAction="always" 
-        android:onClick="clickMenuItem" />
-    
+        android:onClick="clickMenuItem"
+        android:orderInCategory="103"
+        android:showAsAction="always"
+        android:title="@string/label_menu_item_revert"/>
     <item
         android:id="@+id/item_delete"
-        android:orderInCategory="104"
-        android:title="@string/label_menu_item_delete"
         android:icon="@android:drawable/ic_menu_delete"
-        android:showAsAction="always" 
-        android:onClick="clickMenuItem" />
-    
+        android:onClick="clickMenuItem"
+        android:orderInCategory="104"
+        android:showAsAction="always"
+        android:title="@string/label_menu_item_delete"/>
     <item
         android:id="@+id/item_share"
-        android:orderInCategory="105"
-        android:title="@string/label_menu_item_share"
         android:icon="@android:drawable/ic_menu_share"
-        android:showAsAction="always">
-    
-    	<menu>
-    	    <item 
+        android:orderInCategory="105"
+        android:showAsAction="always"
+        android:title="@string/label_menu_item_share">
+        <menu>
+            <item
                 android:id="@+id/item_share_google"
+                android:onClick="clickMenuItem"
                 android:orderInCategory="201"
-                android:title="@string/label_menu_share_google" 
-        		android:onClick="clickMenuItem" />
+                android:title="@string/label_menu_share_google"/>
             <item
                 android:id="@+id/item_share_facebook"
+                android:onClick="clickMenuItem"
                 android:orderInCategory="202"
-                android:title="@string/label_menu_share_facebook" 
-        		android:onClick="clickMenuItem" />
-    	</menu>
-	
+                android:title="@string/label_menu_share_facebook"/>
+        </menu>
     </item>
+    <item
+        android:id="@+id/item_preference"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:onClick="clickMenuItem"
+        android:orderInCategory="199"
+        android:showAsAction="always"
+        android:title="@string/label_menu_preference"/>
+
 </menu>

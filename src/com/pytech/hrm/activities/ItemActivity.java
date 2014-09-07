@@ -2,12 +2,14 @@ package com.pytech.hrm.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
 import com.pytech.hrm.R;
 import com.pytech.hrm.models.Item;
+import com.pytech.hrm.util.PrefUtils;
 import com.pytech.hrm.util.constants.Colors;
 import com.pytech.hrm.util.constants.HRM;
 
@@ -90,13 +92,19 @@ public class ItemActivity extends Activity {
 		Intent intent = this.getIntent();
 		String action = intent.getAction();
 
-		if(HRM.ACTION_EDIT_ITEM.equals(action)) {
+		if(this.getString(R.string.ACTION_EDIT_ITEM).equals(action)) {
 			// Use existed title & content.
 			this.item = intent.getParcelableExtra(HRM.KEY_ITEM);
 			this.title_text.setText(item.getTitle());
 			this.content_text.setText(item.getContent());
 		} else {
 			this.item = new Item();
+			// Handle default color setting.
+			SharedPreferences pref = PrefUtils.getSharedPref(this);
+			int color = pref.getInt(this.getString(R.string.PREF_KEY_COLOR), HRM.UNKNOWN);
+			if(color != HRM.UNKNOWN) {
+				this.item.setColor(Colors.fromColorId(color));
+			}
 		}
 	}
 }
