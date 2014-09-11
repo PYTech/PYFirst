@@ -29,11 +29,10 @@ public class ItemAdapter extends ArrayAdapter<Item> {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		LinearLayout itemView;
-		// 讀取目前位置的記事物件
+		
 		final Item item = this.getItem(position);
 
 		if(convertView == null) {
-			// 建立項目畫面元件
 			itemView = new LinearLayout(this.getContext());
 			LayoutInflater inflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			inflater.inflate(this.resource, itemView, true);
@@ -41,27 +40,22 @@ public class ItemAdapter extends ArrayAdapter<Item> {
 			itemView = (LinearLayout) convertView;
 		}
 
-		// 讀取記事顏色、已選擇、標題與日期時間元件
 		RelativeLayout typeColor = (RelativeLayout) itemView.findViewById(R.id.type_color);
 		ImageView selectedItem = (ImageView) itemView.findViewById(R.id.selected_item);
 		TextView titleView = (TextView) itemView.findViewById(R.id.title_text);
 		TextView dateView = (TextView) itemView.findViewById(R.id.date_text);
 
-		// 設定記事顏色
 		GradientDrawable background = (GradientDrawable) typeColor.getBackground();
 		background.setColor(item.getColor().parseColor());
 
-		// 設定標題與日期時間
 		titleView.setText(item.getTitle());
 		dateView.setText(item.getLocaleDatetime());
 
-		// 設定是否已選擇
 		selectedItem.setVisibility(item.isSelected() ? View.VISIBLE : View.INVISIBLE);
 
 		return itemView;
 	}
 
-	// 設定指定編號的記事資料
 	public void set(int index, Item item) {
 		if(index >= 0 && index < this.items.size()) {
 			this.items.set(index, item);
@@ -69,7 +63,6 @@ public class ItemAdapter extends ArrayAdapter<Item> {
 		}
 	}
 
-	// 讀取指定編號的記事資料
 	public Item get(int index) {
 		return this.items.get(index);
 	}
