@@ -29,11 +29,11 @@ public class ItemAdapter extends ArrayAdapter<Item> {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		LinearLayout itemView;
-		// Åª¨ú¥Ø«e¦ì¸mªº°O¨Æª«¥ó
+		// è®€å–ç›®å‰ä½ç½®çš„è¨˜äº‹ç‰©ä»¶
 		final Item item = this.getItem(position);
 
 		if(convertView == null) {
-			// «Ø¥ß¶µ¥Øµe­±¤¸¥ó
+			// å»ºç«‹é …ç›®ç•«é¢å…ƒä»¶
 			itemView = new LinearLayout(this.getContext());
 			LayoutInflater inflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			inflater.inflate(this.resource, itemView, true);
@@ -41,27 +41,27 @@ public class ItemAdapter extends ArrayAdapter<Item> {
 			itemView = (LinearLayout) convertView;
 		}
 
-		// Åª¨ú°O¨ÆÃC¦â¡B¤w¿ï¾Ü¡B¼ĞÃD»P¤é´Á®É¶¡¤¸¥ó
+		// è®€å–è¨˜äº‹é¡è‰²ã€å·²é¸æ“‡ã€æ¨™é¡Œèˆ‡æ—¥æœŸæ™‚é–“å…ƒä»¶
 		RelativeLayout typeColor = (RelativeLayout) itemView.findViewById(R.id.type_color);
 		ImageView selectedItem = (ImageView) itemView.findViewById(R.id.selected_item);
 		TextView titleView = (TextView) itemView.findViewById(R.id.title_text);
 		TextView dateView = (TextView) itemView.findViewById(R.id.date_text);
 
-		// ³]©w°O¨ÆÃC¦â
+		// è¨­å®šè¨˜äº‹é¡è‰²
 		GradientDrawable background = (GradientDrawable) typeColor.getBackground();
 		background.setColor(item.getColor().parseColor());
 
-		// ³]©w¼ĞÃD»P¤é´Á®É¶¡
+		// è¨­å®šæ¨™é¡Œèˆ‡æ—¥æœŸæ™‚é–“
 		titleView.setText(item.getTitle());
 		dateView.setText(item.getLocaleDatetime());
 
-		// ³]©w¬O§_¤w¿ï¾Ü
+		// è¨­å®šæ˜¯å¦å·²é¸æ“‡
 		selectedItem.setVisibility(item.isSelected() ? View.VISIBLE : View.INVISIBLE);
 
 		return itemView;
 	}
 
-	// ³]©w«ü©w½s¸¹ªº°O¨Æ¸ê®Æ
+	// è¨­å®šæŒ‡å®šç·¨è™Ÿçš„è¨˜äº‹è³‡æ–™
 	public void set(int index, Item item) {
 		if(index >= 0 && index < this.items.size()) {
 			this.items.set(index, item);
@@ -69,7 +69,7 @@ public class ItemAdapter extends ArrayAdapter<Item> {
 		}
 	}
 
-	// Åª¨ú«ü©w½s¸¹ªº°O¨Æ¸ê®Æ
+	// è®€å–æŒ‡å®šç·¨è™Ÿçš„è¨˜äº‹è³‡æ–™
 	public Item get(int index) {
 		return this.items.get(index);
 	}
