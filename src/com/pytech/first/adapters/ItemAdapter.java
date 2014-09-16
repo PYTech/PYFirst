@@ -29,11 +29,18 @@ public class ItemAdapter extends ArrayAdapter<Item> {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		LinearLayout itemView;
+<<<<<<< HEAD
 		// 讀取目前位置的記事物件
 		final Item item = this.getItem(position);
 
 		if(convertView == null) {
 			// 建立項目畫面元件
+=======
+		
+		final Item item = this.getItem(position);
+
+		if(convertView == null) {
+>>>>>>> origin/master
 			itemView = new LinearLayout(this.getContext());
 			LayoutInflater inflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			inflater.inflate(this.resource, itemView, true);
@@ -41,12 +48,16 @@ public class ItemAdapter extends ArrayAdapter<Item> {
 			itemView = (LinearLayout) convertView;
 		}
 
+<<<<<<< HEAD
 		// 讀取記事顏色、已選擇、標題與日期時間元件
+=======
+>>>>>>> origin/master
 		RelativeLayout typeColor = (RelativeLayout) itemView.findViewById(R.id.type_color);
 		ImageView selectedItem = (ImageView) itemView.findViewById(R.id.selected_item);
 		TextView titleView = (TextView) itemView.findViewById(R.id.title_text);
 		TextView dateView = (TextView) itemView.findViewById(R.id.date_text);
 
+<<<<<<< HEAD
 		// 設定記事顏色
 		GradientDrawable background = (GradientDrawable) typeColor.getBackground();
 		background.setColor(item.getColor().parseColor());
@@ -56,12 +67,23 @@ public class ItemAdapter extends ArrayAdapter<Item> {
 		dateView.setText(item.getLocaleDatetime());
 
 		// 設定是否已選擇
+=======
+		GradientDrawable background = (GradientDrawable) typeColor.getBackground();
+		background.setColor(item.getColor().parseColor());
+
+		titleView.setText(item.getTitle());
+		dateView.setText(item.getLocaleDatetime());
+
+>>>>>>> origin/master
 		selectedItem.setVisibility(item.isSelected() ? View.VISIBLE : View.INVISIBLE);
 
 		return itemView;
 	}
 
+<<<<<<< HEAD
 	// 設定指定編號的記事資料
+=======
+>>>>>>> origin/master
 	public void set(int index, Item item) {
 		if(index >= 0 && index < this.items.size()) {
 			this.items.set(index, item);
@@ -69,7 +91,10 @@ public class ItemAdapter extends ArrayAdapter<Item> {
 		}
 	}
 
+<<<<<<< HEAD
 	// 讀取指定編號的記事資料
+=======
+>>>>>>> origin/master
 	public Item get(int index) {
 		return this.items.get(index);
 	}
